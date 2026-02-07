@@ -1,22 +1,47 @@
 import random
 
-left, right = 1, 100
 
+# Блок функций
+# Проверка ввода числа от пользователя
+def is_valid(input_string):
+    return input_string.isdigit() and 1 <= int(input_string) <= 100
 
-def random_number(fromm, to):
-    num = random.randint(fromm, to)
-    count = 1
+def input_num():
     while True:
-        user_num = int(input())
-        count += 1
-        if user_num > num:
-            print("Слишком много, попробуйте еще раз")
-            continue
-        elif user_num < num:
-            print("Слишком мало, попробуйте еще раз")
-            continue
+        user_num = input()
+        if is_valid(user_num):
+            return int(user_num)
         else:
-            return f"Вы угадали, поздравляем! \nКоличетсво попыток: {count}"
+            print("А может быть все-таки введем целое число от 1 до 100?")
+
+# Сравнение введенного пользователем числа и загадонного
+def compare_num():
+    while True:
+        user_num = input_num()
+        if user_num > num:
+            print("Ваше число больше загаданного, попробуйте еще разок")
+        elif user_num < num:
+            print("Ваше число меньше загаданного, попробуйте еще разок")
+        else:
+            return print("Вы угадали, поздравляем!")  # \nКоличетсво попыток: {count}"
+
+
+# Основаная программа
+num = random.randint(1, 100)
+print("Добро пожаловать в числовую угадайку\n")
+print("Введите число от 1 до 100 включительно")
+
+compare_num()
+
+
+# count = 1
+
+
+#    count += 1
+
+
+# def random_number(fromm, to):
+#    num = random.randint(fromm, to)
 
 
 # пока не предумал как встроить через функцию
@@ -39,4 +64,4 @@ def number_of_attempts():
     print(count)
 
 
-print(random_number(left, right))
+# print(random_number(left, right))
