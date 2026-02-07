@@ -27,7 +27,7 @@ def input_num():
 
 # Сравнение введенного пользователем числа и загадонного
 def compare_num():
-    count = 1
+    count = 0
     while True:
         user_num = input_num()
         count += 1
@@ -59,8 +59,8 @@ print("Компьютер загадает число, а вы должны ег
 print('Если захотите выйти введите \"q\" без кавычек')
 while True:
     right_limit = choise_right_limit()
-    num = random.randint(1, right_limit + 1)
-    print(f"\nВведите число от 1 до {right_limit} включительно:")
+    num = random.randint(1, right_limit)
+    print(f"\nВведите число от 1 до {right_limit}:")
     compare_num()
     if not play_again():
         break
