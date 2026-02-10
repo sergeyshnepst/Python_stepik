@@ -78,8 +78,8 @@ result = ""
 while True:
     answer = input("\nИсключить неоднознанчее символы 'il1Lo0O'?\n")
     if answer.lower() == "да":
-        for i in symbols:
-            if i not in chars:
+        for i in chars:
+            if i not in symbols:
                 result += i
         break
     elif answer.lower() == "нет":
