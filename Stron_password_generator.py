@@ -1,8 +1,11 @@
 import random
 
-
-def generate_password(chars):
-    return random.choice(chars)
+# Генерация пароля нужной длины
+def generate_password(length, chars):
+    password = ""
+    for j in range(length):
+        password += random.choice(chars)
+    return password
 
 
 # Блок основаной программы
@@ -74,23 +77,18 @@ while True:
         print("Можно ввести только 'да' или 'нет' без кавычек")
 
 # Исключать ли неоднозначные символы il1Lo0O?
-result = ""
 while True:
     answer = input("\nИсключить неоднознанчее символы 'il1Lo0O'?\n")
     if answer.lower() == "да":
-        for i in chars:
-            if i not in symbols:
-                result += i
+        for i in symbols:
+            chars = chars.replace(i, "")
         break
     elif answer.lower() == "нет":
-        result = chars
+        chars
         break
     else:
         print("Можно ввести только 'да' или 'нет' без кавычек")
 
 
 for i in range(int(qty_pass)):
-    password = ""
-    for j in range(int(len_pass)):
-        password += generate_password(result)
-    print(f"Ваш пароль {(i + 1)}: {password}\n")
+    print(f"Ваш пароль {(i + 1)}: {(generate_password(int(len_pass), chars))}\n")
