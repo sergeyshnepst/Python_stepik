@@ -10,7 +10,24 @@
 en_alphabet = "abcdefghijklmnopqrstuvwxyz"
 ru_alphabet = "абвгдежзийклмнопрстуфхцчшщъыьэюя"
 n = 0
-new_text = ""
+
+def caesar_cipher():
+    new_text = ""
+    for i in range(len(text)):
+        if text[i].isalpha():
+            if text[i] == text[i].upper():
+                for j in range(n):
+                    if text[i] == language[j].upper():
+                        new_text += language[(j + int(step)) % n].upper()
+                        break
+            elif text[i] == text[i].lower():
+                for k in range(n):
+                    if text[i] == language[k].lower():
+                        new_text += language[(k + int(step)) % n].lower()
+                        break
+        else:
+            new_text += text[i]
+    return new_text
 
 # eng_upper_alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
@@ -55,20 +72,5 @@ while True:
 text = input("\nВведите текст\n")
 
 # TODO добавить выбор шифровки/расшифровки
-# TODO добавить функцию
-for i in range(len(text)):
-    if text[i].isalpha():
-        if text[i] == text[i].upper():
-            for j in range(n):
-                if text[i] == language[j].upper():
-                    new_text += language[(j + int(step)) % n].upper()
-                    break
-        elif text[i] == text[i].lower():
-            for k in range(n):
-                if text[i] == language[k].lower():
-                    new_text += language[(k + int(step)) % n].lower()
-                    break
-    else:
-        new_text += text[i]
+print(caesar_cipher())
 
-print(new_text)
