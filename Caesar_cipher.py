@@ -1,10 +1,10 @@
-# x=(y−k) % n
-
+# y=(x+k) % n для расшифровки
+# x=(y−k) % n для шифровки
 # где
 # x — символ открытого текста,
 # y — символ шифрованного текста,
 # n — мощность алфавита (количество символов), а
-# k — ключ.
+# k — ключ
 
 # Основная программа
 en_alphabet = "abcdefghijklmnopqrstuvwxyz"
@@ -29,10 +29,6 @@ def caesar_cipher():
             new_text += text[i]
     return new_text
 
-# eng_upper_alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-
-# rus_upper_alphabet = "АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
-
 # направление: шифрование или дешифрование
 while True:
     direction = input("Вы ходите зашифровать или расшифровать текст?\n")
@@ -48,11 +44,11 @@ while True:
 # язык алфавита: русский или английский
 while True:
     language = input("На каком языке шифр?\n")
-    if language.lower() == "русский":
+    if language.lower() == "русский" or language.lower() == "ru":
         n = 32
         language = ru_alphabet
         break
-    elif language.lower() == "английский":
+    elif language.lower() == "английский" or language.lower() == "eng":
         n = 26
         language = en_alphabet
         break
@@ -66,13 +62,14 @@ while True:
         break
     else:
         print("Можно ввести только число")
-if direction == "dec":
-    step = - int(step)
 
 # Предложение ввести текст
-# TODO сделать выбор текста для шифровки и дешифровки
-text = input("\nВведите текст\n")
+if direction == "dec":
+    step = - int(step) # подставновка знака "-" в формулу перед шагом
+    input_text = "расшифровки"
+elif direction == "enc":
+    input_text = "шифровки"
+text = input(f"\nВведите текст для {input_text}\n")
 
-# TODO добавить выбор шифровки/расшифровки
+# Вывод результата
 print(caesar_cipher())
-
