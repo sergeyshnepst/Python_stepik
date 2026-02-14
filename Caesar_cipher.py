@@ -66,6 +66,8 @@ while True:
         break
     else:
         print("Можно ввести только число")
+if direction == "dec":
+    step = - int(step)
 
 # Предложение ввести текст
 # TODO сделать выбор текста для шифровки и дешифровки
