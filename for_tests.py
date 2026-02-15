@@ -1,30 +1,6 @@
-en_alphabet = "abcdefghijklmnopqrstuvwxyz"
-
-
-def caesar_cipher():
-    new_text = ""
-    for i in range(len(text)):
-        if text[i].isalpha():
-            if text[i] == text[i].upper():
-                for j in range(n):
-                    if text[i] == language[j].upper():
-                        new_text += language[(j + step) % n].upper()
-                        break
-            elif text[i] == text[i].lower():
-                for k in range(n):
-                    if text[i] == language[k].lower():
-                        new_text += language[(k + step) % n].lower()
-                        break
-        else:
-            new_text += text[i]
-    return new_text
-
-
-# step = длина элемента
-
 string = input()
 lst = []
-st = ''
+st = ""
 # преобразование строки в список со знакоми препинания и пробелами
 # ['Day', ',', ' ', 'mice', '.', ' ', '"', 'Year', '"', ' ', 'is', ' ', 'a', ' ', 'mistake', '!']
 for sym in string:
@@ -34,23 +10,5 @@ for sym in string:
         if len(st):
             lst.append(st)
         lst.append(sym)
-        st = ''
-
-new_text = []
-n = 26  # количество символов в алфавите
-for element in lst:
-    for i in range(len(element)):
-        if element[i].isalpha():
-            if element[i] == element[i].upper():
-                for j in range(n):
-                    if element[i] == en_alphabet[j].upper():
-                        new_text += en_alphabet[(j + len(element)) % n].upper()
-                        # break
-            elif element[i] == element[i].lower():
-                for j in range(n):
-                    if element[i] == en_alphabet[j].lower():
-                        new_text += en_alphabet[(j + len(element)) % n].lower()
-                        # break
-        else:
-            new_text.append(element[i])
-print("".join(new_text))
+        st = ""
+print(lst)

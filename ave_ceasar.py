@@ -13,6 +13,9 @@ for sym in string:
             lst.append(st)
         lst.append(sym)
         st = ""
+# добавление последнего слова в список, если нет знаков припинания в конце строки
+if len(st):
+    lst.append(st)
 
 new_text = []
 n = 26  # количество символов в алфавите
