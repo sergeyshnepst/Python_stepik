@@ -1,5 +1,5 @@
-## Hi there 👋
-
+## Привет 👋
+Раздел по минипроектам разработанным в ходе прохождения курса на платформе Stepik
 <!--
 **sergeyshnepst/sergeyshnepst** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
