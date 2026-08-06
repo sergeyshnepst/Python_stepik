@@ -1,8 +1,14 @@
-num = int(input())
-bin = bin(num)
-oct = oct(num)
-hex = hex(num)
+from turtle import *
 
-print(str(bin[2:]))
-print(str(oct[2:]))
-print(str(hex[2:].upper()))
+def romb(side):
+    for i in range(2):
+        forward(side)
+        left(50)
+        forward(side)
+        left(130)
+   
+for j in range(10):
+    romb(100)
+    left(36)
+
+   
