@@ -598,3 +598,29 @@ print(cmath.polar(z)) # полярные координаты
 Для работы с комплексными числами (тип complex) не нужно подключать какой-либо модуль 
 в отличие от типов Decimal и Fraction
 ```
+
+## Функции высшего порядка
+### Самописные функции map(), filter(), reduce()
+```python
+def map(function, items):
+    result = []
+    for item in items:
+        new_item = function(item)
+        result.append(new_item)
+    return result
+```
+```python
+def filter(function, items):
+    result = []
+    for item in items:
+        if function(item):        
+            result.append(item)  # добавляем элемент item если функция function вернула значение True
+    return result
+```
+```python
+def reduce(operation, items, initial_value):
+    acc = initial_value
+    for item in items:
+        acc = operation(acc, item)
+    return acc
+```
