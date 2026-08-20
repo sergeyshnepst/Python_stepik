@@ -760,3 +760,37 @@ sorted_people = sorted(people, key=op.itemgetter('age'))
 numbers = [1, 2, 3, 4, 5]
 even = list(filter(op.methodcaller('__mod__', 2).__eq__(0), numbers))  # [2, 4]
 ```
+
+## Анонимные функции
+#### Базовые lambda
+```python
+lambda x: x + 1           # Увеличить на 1
+lambda x: x * 2           # Удвоить
+lambda x: x ** 2          # Квадрат
+lambda x, y: x + y        # Сумма двух
+lambda x: x > 0           # Проверка на положительность
+lambda x: x % 2 == 0      # Проверка на чётность
+lambda x: len(x)          # Длина
+lambda x: x[1]            # Второй элемент
+```
+#### С тернарным условием
+```python
+lambda x: 'even' if x % 2 == 0 else 'odd'
+lambda x: x if x > 0 else -x  # Модуль
+lambda x, y: x if x > y else y  # Максимум
+```
+#### С *args и **kwargs
+```python
+lambda *args: sum(args)
+lambda **kwargs: sum(kwargs.values())
+```
+#### Немедленный вызов
+```python
+(lambda x, y: x + y)(5, 10)  # 15
+```
+#### В map/filter/sorted
+```python
+list(map(lambda x: x*2, [1,2,3]))
+list(filter(lambda x: x>0, [-1,0,1]))
+sorted(points, key=lambda p: p[1])
+```
