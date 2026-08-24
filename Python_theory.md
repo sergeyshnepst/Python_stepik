@@ -794,3 +794,88 @@ list(map(lambda x: x*2, [1,2,3]))
 list(filter(lambda x: x>0, [-1,0,1]))
 sorted(points, key=lambda p: p[1])
 ```
+
+## Функции any(), all(), zip()
+#### all(iterable) — True если ВСЕ элементы истинны
+```python
+print(all([True, True, True]))        # True
+print(all([1, 2, 3, 0]))              # False (0 — False)
+print(all([]))                        # True (пустой — True)
+```
+
+#### any(iterable) — True если ХОТЯ БЫ ОДИН элемент истинен
+```python
+print(any([False, True, False]))      # True
+print(any([0, 0, 0]))                 # False
+print(any([]))                        # False (пустой — False)
+```
+#### примеры all/any с map
+```python
+numbers = [17, 90, 78, 56, 231]
+all_greater_10 = all(map(lambda x: x > 10, numbers))   # True
+
+numbers = [17, 5, 78, 56, 231]
+any_even = any(map(lambda x: x % 2 == 0, numbers))     # True
+```
+#### enumerate(iterable, start=0) — возвращает (индекс, элемент)
+```python
+colors = ['red', 'green', 'blue']
+for i, color in enumerate(colors, 1):
+    print(i, color)                   # 1 red\n2 green\n3 blue
+
+pairs = list(enumerate(colors))       # [(0, 'red'), (1, 'green'), (2, 'blue')]
+```
+
+#### zip(*iterables) — объединяет элементы в кортежи
+```python
+names = ['Timur', 'Ruslan', 'Rustam']
+ages = [28, 21, 19]
+pairs = list(zip(names, ages))        # [('Timur', 28), ('Ruslan', 21), ('Rustam', 19)]
+```
+#### создание словаря из двух списков
+```python
+keys = ['name', 'age', 'gender']
+values = ['Timur', 28, 'male']
+info = dict(zip(keys, values))        # {'name': 'Timur', 'age': 28, 'gender': 'male'}
+```
+#### параллельный перебор
+```python
+for name, age in zip(names, ages):
+    print(f'{name}: {age}')
+```
+#### zip с разной длиной — по кратчайшей последовательности
+```python
+a = [1, 2, 3]
+b = ['a', 'b']
+result = list(zip(a, b))              # [(1, 'a'), (2, 'b')]
+```
+#### zip и enumerate вместе
+```python
+list1 = ['a1', 'a2', 'a3']
+list2 = ['b1', 'b2', 'b3']
+
+for index, (item1, item2) in enumerate(zip(list1, list2)):
+    print(index, item1, item2)
+# 0 a1 b1
+# 1 a2 b2
+# 2 a3 b3
+```
+
+#### удобно для map, filter, reduce
+```python
+from functools import reduce
+words = ['Hello', ' ', 'World']
+sentence = reduce(add, words)         # 'Hello World'
+```
+### Заметки
+✅позиционные аргументы передаются без указания имени, именованные — с именем\
+✅параметры со значениями по умолчанию должны идти после обязательных\
+✅*args собирает лишние позиционные аргументы в кортеж\
+✅**kwargs собирает лишние именованные аргументы в словарь\
+✅lambda — однострочная анонимная функция, может содержать только выражение\
+✅map, filter, enumerate, zip возвращают итераторы (можно обойти циклом или преобразовать в list)\
+✅итератор можно обойти только один раз\
+✅all() возвращает True для пустой последовательности, any() — False\
+✅__defaults__ хранит значения по умолчанию параметров функции\
+✅строковые методы (str.upper, str.isalpha) можно использовать как функции\
+✅min(), max(), sorted() принимают key — функцию для сравнения
