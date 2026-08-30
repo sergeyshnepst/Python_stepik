@@ -14,13 +14,3 @@
 with open(input(), 'r', encoding='utf-8') as file:
     string = file.read().strip()
     print(string[::-1])
-
-    # Решение от преподавателя с тремя переменными
-    #file = open(input())
-    #total_price = 0
-    #for line in file.readlines():
-    #    name, amount, price = line.rstrip().split('\t')
-    #    total_price += int(amount) * int(price)
-    #
-    #print(total_price)
-    #file.close()
