@@ -9,29 +9,24 @@
 
 Примечание 4. Все ключи и значения в результирующем словаре должны иметь строковый тип (тип str)
 """
-def read_csv(filename):
+def file_size(filename):
     with open(filename, 'r', encoding='utf-8') as file:
+        size = 0
         lines = file.readlines()
-        data = []
-        result = []
-        for line in lines[:1]:
-            headers = line.strip().split(",")
-        for line in lines[1:]:
-            data.append(line.strip().split(","))
-        for el in data:
-            result.append(dict(zip(headers, el)))
-        return result
+        for line in lines:
+            for symbol in line:
+                if symbol == '\n':
+                    size += 2
+                else:
+                    size += 1
+        return filename, size
 
-# Решение проподавателя:
-#def read_csv(filename):
-#    res = []
-#    with open(filename) as f:
-#        keys = f.readline().rstrip().split(',')
-#        for line in f:
-#            values = line.rstrip().split(',')
-#            cur_dict = dict(zip(keys, values))
-#            res.append(cur_dict)
-            
-#    return res
+n = int(input())
+d = {}
+for num in range(n):
+    size, filename = file_size(input())
+    d[size] = filename
+res = sorted(d.items(), key=lambda x: (-x[1], x[0]))
+for i in res:
+    print(f'{i[0]} {i[1]}B')
 
-    
